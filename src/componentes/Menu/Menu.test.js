@@ -18,3 +18,10 @@ test('Must not have the bank statement item in the menu', () => {
   const bankStatementLink = screen.queryByText('Extrato');
   expect(bankStatementLink).not.toBeInTheDocument();
 });
+
+test('Must render a list of links with the link class', () => {
+  render(<Menu />);
+  const links = screen.getAllByRole('link');
+  links.forEach(link => expect(link).toHaveClass('link'));
+  expect(links).toMatchSnapshot();
+});
